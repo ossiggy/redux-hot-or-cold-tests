@@ -57,6 +57,16 @@ describe('Reducer', () => {
       };
       state = reducer(state, makeGuess('10'));
       expect(state.feedback).toEqual('You\'re Cold...');
-    })
+    });
+  });
+
+  describe('toggleInfoModal', () => {
+    it('Should set toggleInfoModal value', () => {
+      let state = {
+        showInfoModal: false
+      };
+      state = reducer(state, toggleInfoModal());
+      expect(state.showInfoModal).toBe(true);
+    });
   });
 });

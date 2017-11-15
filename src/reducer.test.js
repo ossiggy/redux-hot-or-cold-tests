@@ -42,7 +42,21 @@ describe('Reducer', () => {
 
   describe('makeGuess', () => {
     it('Should add a guess to the guesses array', () => {
-      
+      let state = {
+        guesses: [guess1, guess2]
+      };
+      state = reducer(state, makeGuess('80'));
+      expect(state.guesses).toEqual(['25', '30', '80']);
+    });
+
+    it('Should provide the correct feedback for the guess', () => {
+      let state ={
+        guesses: [],
+        feedback: 'Make your guess!',
+        correctAnswer: '50'
+      };
+      state = reducer(state, makeGuess('10'));
+      expect(state.feedback).toEqual('You\'re Cold...');
     })
-  })
+  });
 });

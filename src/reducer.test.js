@@ -14,5 +14,35 @@ describe('Reducer', () => {
     expect(state.feedback).toEqual('Make your guess!');
     expect(state.correctAnswer).toBeGreaterThanOrEqual(1);
     expect(state.correctAnswer).toBeLessThanOrEqual(100);
+  });
+
+  it('Should return the current state on an unknown action', () => {
+    let currentState = {};
+    const state = reducer(currentState, {type: '__UNKNOWN'});
+    expect(state).toBe(currentState);
+  });
+
+  describe('newGame', () => {
+    it('Should reset the state', () => {
+      let state = {
+        guesses: [guess1, guess2, guess3],
+        feedback: 'Testing',
+        correctAnswer: correctAnswer,
+        showInfoModal: true
+      };
+
+      state = reducer(state, newGame());
+      expect(state.guesses).toEqual([]);
+      expect(state.feedback).toEqual('Make your guess!');
+      expect(state.correctAnswer).toBeGreaterThanOrEqual(1);
+      expect(state.correctAnswer).toBeLessThanOrEqual(100);
+      expect(state.showInfoModal).toBe(false);
+    });
+  });
+
+  describe('makeGuess', () => {
+    it('Should add a guess to the guesses array', () => {
+      
+    })
   })
-})
+});

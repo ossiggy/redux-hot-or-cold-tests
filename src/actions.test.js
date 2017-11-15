@@ -6,14 +6,21 @@ describe('newGame', () => {
     expect(action.type).toEqual(NEW_GAME);
     expect(action.correctAnswer).toBeGreaterThanOrEqual(1);
     expect(action.correctAnswer).toBeLessThanOrEqual(100);
-  })
-})
+  });
+});
 
 describe('makeGuess', () => {
   it('Should return the action', () => {
     const guess = 22;
     const action = makeGuess(guess);
-    expect(action.type).toEqual(MAKE_GUESS)
-    expect(action.guess).toEqual(guess)
-  })
-})
+    expect(action.type).toEqual(MAKE_GUESS);
+    expect(action.guess).toEqual(guess);
+  });
+});
+
+describe('toggleInfoModal', () => {
+  it('Should return the action', () => {
+    const action = toggleInfoModal();
+    expect(action.type).toEqual(TOGGLE_INFO_MODAL);
+  });
+});

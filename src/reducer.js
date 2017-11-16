@@ -16,7 +16,7 @@ export default (state, action) => {
     if (action.type === NEW_GAME) {
         state = Object.assign({
         }, initialState, {
-            correctAnswer: action.correctAnswer
+            correctAnswer: Math.round(Math.random() * 100)
         });
         return state;
     }
